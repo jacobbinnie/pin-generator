@@ -7,7 +7,7 @@
 // * The library should have automated tests.
 
 let pins = [];
-const requestedAmount = 1000;
+const requestedAmount = 10;
 
 function generatePinCodes(requestedAmount) {
   do {
@@ -17,39 +17,33 @@ function generatePinCodes(requestedAmount) {
         let updatedNumber = "0" + number.toString();
         let numberArray = updatedNumber.split("");
 
-        // Checks if two consecutive numbers present in pin
-        numberArray[0] !== numberArray[1] &&
-          numberArray[1] !== numberArray[2] &&
-          numberArray[2] !== numberArray[3] &&
-          numberArray[3] !== numberArray[4] &&
-          // Check if three consecutive numbers could be incremental
-          numberArray[0] !== numberArray[1] - 1 &&
-          numberArray[1] !== numberArray[2] - 1 &&
-          // Checks if number already exists in array of Pins
-          pins.indexOf(numberArray.join("")) === -1 &&
-          // Pushes ONLY if number passes the above tests
-          pins.push(numberArray.join(""));
+        checks(numberArray);
       } else null;
     } else {
       let updatedNumber = number.toString();
       let numberArray = updatedNumber.split("");
 
-      // Checks if two consecutive numbers present in pin
-      numberArray[0] !== numberArray[1] &&
-        numberArray[1] !== numberArray[2] &&
-        numberArray[2] !== numberArray[3] &&
-        numberArray[3] !== numberArray[4] &&
-        // Check if three consecutive numbers could be incremental
-        numberArray[0] !== numberArray[1] - 1 &&
-        numberArray[1] !== numberArray[2] - 1 &&
-        // Checks if number already exists in array of Pins
-        pins.indexOf(numberArray.join("")) === -1 &&
-        // Pushes ONLY if number passes the above tests
-        pins.push(numberArray.join(""));
+      checks(numberArray);
     }
   } while (pins.length < requestedAmount);
 
   return pins;
+}
+
+function checks(numberArray) {
+  // Checks if two consecutive numbers present in pin
+  numberArray[0] !== numberArray[1] &&
+    numberArray[1] !== numberArray[2] &&
+    numberArray[2] !== numberArray[3] &&
+    numberArray[3] !== numberArray[4] &&
+    // Check if three consecutive numbers could be incremental
+    numberArray[0] !== numberArray[1] - 1 &&
+    numberArray[1] !== numberArray[2] - 1 &&
+    // Checks if number already exists in array of Pins
+    pins.indexOf(numberArray.join("")) === -1 &&
+    // Pushes ONLY if number passes the above tests
+    // Pushes ONLY if number passes the above tests
+    pins.push(numberArray.join(""));
 }
 
 console.log(generatePinCodes(requestedAmount));
