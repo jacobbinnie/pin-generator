@@ -35,7 +35,6 @@ function checks(numberArray) {
   numberArray[0] !== numberArray[1] &&
     numberArray[1] !== numberArray[2] &&
     numberArray[2] !== numberArray[3] &&
-    numberArray[3] !== numberArray[4] &&
     // Check if three consecutive numbers could be incremental
     numberArray[0] !== numberArray[1] - 1 &&
     numberArray[1] !== numberArray[2] - 1 &&
